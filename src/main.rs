@@ -4,9 +4,9 @@ use std::fs;
 
 fn main() {
 
-    //Iniciar servidor
-    let address = "127.0.0.1:8000"; //127.0.0.1 asta 127.0.0.7
-    let listener = TcpListener::bind(&address).unwrap();
+    //Start Server
+    let address = "127.0.0.1:8000"; //127.0.0.1 to 127.0.0.7
+    let listener = TcpListener::bind(&address).unwrap();//conection to server
 
     println!("Servidor iniciado en {}",&address);
     //escuchar por conexion
@@ -15,7 +15,7 @@ fn main() {
         handle_connection(stream);
     }
 }
-//manejar las conexiones
+//Handle connections
 fn handle_connection(mut stream: TcpStream) {
     let mut buffer = [0; 1024];
 
@@ -26,7 +26,7 @@ fn handle_connection(mut stream: TcpStream) {
 
     let get = b"GET / HTTP/1.1";//127.0.0.1:8000/
     if buffer.starts_with(get) {
-        //responder al cliente
+        //Responder al cliente
         send_index(stream);
     }else {
         send_not_found(stream);

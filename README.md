@@ -1,6 +1,6 @@
 # basic_web_server
 
-Create to basic Server Web  in Rust.
+Building a basic web server in Rust.
 
 use libs:
 std::net::{TcpListener, TcpStream};
